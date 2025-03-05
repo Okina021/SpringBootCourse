@@ -1,0 +1,38 @@
+package com.example.carros.domain;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CarroService {
+    @Autowired
+    private CarroRepository repository;
+
+    public List<Carro> getCarros() {
+        return repository.findAll();
+    }
+
+    public Optional<Carro> getCarroById(Long id) {
+        return repository.findById(id);
+    }
+
+    public List<Carro> getCarroByTipo(String tipo) {
+        return repository.findByTipo(tipo);
+    }
+
+    public Carro save(Carro carro) {
+        return repository.save(carro);
+    }
+
+    public Carro update(Long id, Carro carro) {
+        return repository.save(carro);
+    }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+}
